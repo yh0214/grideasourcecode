@@ -1,0 +1,26 @@
+{
+  "config": {
+    "branch": "master",
+    "domain": "https://yh0214.github.io",
+    "email": "yanghang0214@qq.com",
+    "platform": "github",
+    "repository": "yh0214.github.io",
+    "token": "f78068396c38b2cba5893870feafb3e896ea168e",
+    "username": "yh0214"
+  },
+  "comment": {
+    "commentPlatform": "gitalk",
+    "disqusSetting": {
+      "api": "",
+      "apikey": "",
+      "shortname": ""
+    },
+    "gitalkSetting": {
+      "clientId": "",
+      "clientSecret": "",
+      "owner": "",
+      "repository": ""
+    },
+    "showComment": false
+  }
+}
