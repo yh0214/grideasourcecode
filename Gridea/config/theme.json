@@ -4,7 +4,7 @@
     "dateFormat": "YYYY-MM-DD",
     "feedCount": 10,
     "feedFullText": true,
-    "footerInfo": "Powered by <a href=\"https://github.com/getgridea/gridea\" target=\"_blank\">Gridea</a>",
+    "footerInfo": "",
     "postPageSize": 10,
     "postUrlFormat": "SLUG",
     "showFeatureImage": true,
