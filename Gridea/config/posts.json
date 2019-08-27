@@ -1,0 +1,27 @@
+{
+  "posts": [
+    {
+      "content": "**Git配置**\nGit安装完成后需要配置个人的用户名称和邮件地址\n```\ngit config --global user.name \"yanghang\"\ngit config --global user.email yanghang0214@qq.com\n```\n查看配置信息\n```\ngit config --list\n```\n**Git工作区、暂存区和版本库**\n* 工作区：就是你在电脑里能看到的目录。\n* 暂存区：英文叫stage, 或index。一般存放在 \".git目录下\" 下的index文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。\n* 版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。\n\n**Git创建仓库**\n初始化Git仓库\n```\ngit init\n```\n使用git clone从现有Git仓库中拷贝项目（类似svn checkout）\n克隆仓库的命名格式为：\n```\ngit clone <repo>\n```\n如果需要克隆到指定目录，可以使用：\n```\ngit clone <repo> <directory>\n```\n将文件添加到缓存，例如添加两个文件：\n```\ngit add README hello.php \n```\n新项目中添加所有文件很普遍，可以使用git add .\n查看文件是否添加成功：\n```\ngit status\ngit status -s\n```\n将缓存区内容添加到仓库中：\n```\ngit commit -m '第一次版本提交'\n```\n查看文件修改了哪些内容：\n```\ngit diff readme.txt \n```\n查看git提交修改的日志：\n```\ngit log\n```\nGit版本回退，在Git中用HEAD表示当前版本，上个版本是HEAD^,上上个版本是HEAD^^，往上100个写成HEAD~100：\n```\ngit reset --hard HEAD^\n```\n要重返未来需要用git reflog查看命令历史\nGit添加远程仓库\n第一步：创建SSH Key，使用自己的邮件地址，一路回车使用默认值。\n```\nssh-keygen -t rsa -C \"youremail@example.com\"\n```\n如果一切顺利的话，可以在**用户主目录**里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。\n第二步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容，点“Add Key”，你就应该看到已经添加的Key。\n关联远程仓库：\n```\ngit remote add origin git@github.com:yh0214/gridea.source.code.git\n```\n远程库的名字就是origin，这是Git默认的叫法，也可以改成别的\n关联后，使用命令git push -u origin master第一次推送master分支的所有内容；此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；\n从远程库克隆至本地：\n```\ngit clone git@github.com:yh0214/gridea.source.code\n```\n删除github上文件\n```\ngit rm -r --cached 文件夹名称\ngit commit -m 'delete 文件夹名称 dir'\ngit push -u origin master\n```\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "data": {
+        "title": "Git",
+        "date": "2019-08-27 08:31:42",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "git"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Gridea",
+      "slug": "eqeFQaS7k",
+      "used": false
+    }
+  ],
+  "menus": []
+}
