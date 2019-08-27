@@ -20,6 +20,7 @@ git config --list
 * 工作区：就是你在电脑里能看到的目录。
 * 暂存区：英文叫stage, 或index。一般存放在 ".git目录下" 下的index文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。
 * 版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+
 **Git创建仓库**
 初始化Git仓库
 ```
@@ -73,6 +74,12 @@ ssh-keygen -t rsa -C "youremail@example.com"
 git remote add origin git@github.com:yh0214/gridea.source.code.git
 ```
 远程库的名字就是origin，这是Git默认的叫法，也可以改成别的
+关联后，使用命令git push -u origin master第一次推送master分支的所有内容；此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+从远程库克隆至本地：
+```
+git clone git@github.com:yh0214/gridea.source.code
+```
+
 
 
 
