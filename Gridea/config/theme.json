@@ -4,7 +4,7 @@
     "dateFormat": "YYYY-MM-DD",
     "feedCount": 10,
     "feedFullText": true,
-    "footerInfo": "",
+    "footerInfo": "Copyright © 2019 yanghang",
     "postPageSize": 10,
     "postUrlFormat": "SLUG",
     "showFeatureImage": true,

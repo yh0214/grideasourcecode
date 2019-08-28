@@ -231,9 +231,55 @@ while循环需要一个条件支撑，如果条件为True，循环将继续。
 ### for in
 python的for循环和其他语言不一样，在for关键字里实现了一个迭代协议，通过迭代协议完成了对可迭代对象的循环。
 #### 提前终止
-
+当在for循环体内，遇到break关键字的时候，将会结束本层循环，注意不是本次，是本层
+如果是两个for循环,那么就会退出本层循环，进入上层循环的下一次循环中
+```
+for i in range(3):
+    for j in range(5):
+        print('j:' + str(j))
+        if j % 2 == 0:
+            print('i:',i,'j:',j)
+            break
+```
 #### 跳过
+continue是跳过本次循环，继续下一次循环，**注意这里是继续同一层的下一次循环**
+```
+for i in range(0,3):    
+    if i % 2 != 0:
+        print(i)
+        continue
+```
 ### else子句
+在python中，for循环还有一个其他语言没有的关键字，else
+这个else不是if的else，而是for的else。只有当for循环的主体循环全部结束后，才会去执行else语句。
+举个栗子：
+```
+In[0]:
+for i in range(10):
+    pass
+else:
+    print('ok')
+Out[0]:ok
+```
+如果循环体被break了呢？
+```
+In[0]:
+for i in range(10):
+    break
+else:
+    print('ok')
+Out[0]:
+```
+如果是continue呢？
+```
+In[0]:
+for i in range(10):
+    continue
+else:
+    print('ok')
+Out[0]:ok
+```
+结论：**当循环没有提前退出时，会执行else子句**
 
 
 
