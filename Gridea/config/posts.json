@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "content": "# 定义\n线性结构共同特点：\n* 可迭代\n* 可以用len方法获取长度\n* 可以通过索引访问\n* 可以切片\n\n# enumerate\n```\nIn[]：\nenumerate((1,2,3))\nOut[]：\n<enumerate at 0x6059750>\n```\n返回一个可迭代对象，再来看看这个可迭代对象是什么\n```\nIn[]：\nlist(enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n实现一个enumerate函数\n```\nIn[]：\ndef new_enumerate(iterator):\n    i = 0\n    for v in iterator:\n        yield i,v\n        i += 1\nlist(new_enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n需要同时获取索引和value时用这个函数\n# 迭代器\n\n\n\n\n```\nIn[]：\n\nOut[]：\n\n```",
+      "content": "# 定义\n线性结构共同特点：\n* 可迭代\n* 可以用len方法获取长度\n* 可以通过索引访问\n* 可以切片\n\n# enumerate\n```\nIn[]：\nenumerate((1,2,3))\nOut[]：\n<enumerate at 0x6059750>\n```\n返回一个可迭代对象，再来看看这个可迭代对象是什么\n```\nIn[]：\nlist(enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n实现一个enumerate函数\n```\nIn[]：\ndef new_enumerate(iterator):\n    i = 0\n    for v in iterator:\n        yield i,v\n        i += 1\nlist(new_enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n需要同时获取索引和value时用这个函数\n# 迭代器\n可迭代对象可以通过iter方法转换为迭代器\nnext可以迭代迭代器，不可以迭代可迭代对象\n当next将迭代器的元素都迭代过一遍后，再迭代一次就会抛出StopIteration\n```\nIn[]：\nit = iter(list((1,2,3)))\nnext(it)\nOut[]：\n1\n```\n# 切片操作\nlst\\[start:stop\\]，可以访问这个list一段，从start开始，到stop结束，不包含stop，并且是原地不修改，有返回值\n* start超出索引范围时，start = 0\n* stop超出索引范围时，stop = -0\n* 当start>=stop时，返回空列表\n* 负数索引，实际上等于len(lst) + index\n\n\n```\nIn[]：\n\nOut[]：\n\n```",
       "data": {
         "title": "Python线性结构与切片",
         "date": "2019-09-03 17:29:44",

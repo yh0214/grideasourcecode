@@ -41,8 +41,22 @@ Out[]：
 ```
 需要同时获取索引和value时用这个函数
 # 迭代器
-
-
+可迭代对象可以通过iter方法转换为迭代器
+next可以迭代迭代器，不可以迭代可迭代对象
+当next将迭代器的元素都迭代过一遍后，再迭代一次就会抛出StopIteration
+```
+In[]：
+it = iter(list((1,2,3)))
+next(it)
+Out[]：
+1
+```
+# 切片操作
+lst\[start:stop\]，可以访问这个list一段，从start开始，到stop结束，不包含stop，并且是原地不修改，有返回值
+* start超出索引范围时，start = 0
+* stop超出索引范围时，stop = -0
+* 当start>=stop时，返回空列表
+* 负数索引，实际上等于len(lst) + index
 
 
 ```
