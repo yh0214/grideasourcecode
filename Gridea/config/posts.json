@@ -1,7 +1,37 @@
 {
   "posts": [
     {
-      "content": "# 字符串格式化\n# print style字符串格式化\n# format方法\n# f前缀\n\n\n\n",
+      "content": "# 定义\n线性结构共同特点：\n* 可迭代\n* 可以用len方法获取长度\n* 可以通过索引访问\n* 可以切片\n\n# enumerate\n```\nIn[]：\nenumerate((1,2,3))\nOut[]：\n<enumerate at 0x6059750>\n```\n返回一个可迭代对象，再来看看这个可迭代对象是什么\n```\nIn[]：\nlist(enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n实现一个enumerate函数\n```\nIn[]：\ndef new_enumerate(iterator):\n    i = 0\n    for v in iterator:\n        yield i,v\n        i += 1\nlist(new_enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n需要同时获取索引和value时用这个函数\n# 迭代器\n\n\n\n\n```\nIn[]：\n\nOut[]：\n\n```",
+      "data": {
+        "title": "Python线性结构与切片",
+        "date": "2019-09-03 17:29:44",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "python-xian-xing-jie-gou-yu-qie-pian"
+    },
+    {
+      "content": "# 定义\n* str是文本序列\n* bytes是字节序列\n\n## 区别\n* 文本是有编码的，例如：utf8、gbk\n* 字节没有编码\n* 文本的编码指的是字符如何使用字节来表示\n\n## 编码\n* 单字节编码，例如：ascii\n* 多字节编码，例如：utf8\n\n**注意：python3中，字符串默认使用utf8编码**\n而把字符串经过编码后的数据类型，我们称为bytes\n以下这段编码就是用utf8编码表示的字节：\n```\nIn[]：\ns = '人人都是Pythonista'\ns.encode()\nOut[]：\nb'\\xe4\\xba\\xba\\xe4\\xba\\xba\\xe9\\x83\\xbd\\xe6\\x98\\xafPythonista'\n```\nbytes是可以转化成字符串的\n```\nIn[]：\ns = '人人都是Pythonista'\nbt = s.encode()\nbt.decode()\nOut[]：\n'人人都是Pythonista'\n```\n**在python3中，socket只能用bytes**\n**注意：在python2中不区分bytes和str**\n# bytes\n## bytes定义\nstr的所有操作，bytes都支持\n* bytes由str通过encode方法转化得到\n* 通过b前缀定义bytes\n\n```\nIn[]：\nbt = b'abc'\ntype(bt)\nOut[]：\nbytes\n```\n## bytes操作\nbytes的操作除了encode外，str操作都有对应bytes的版本，但是传入参数也必须是bytes，如果传入字符串会报错\n栗子（使用socket发送十六进制报文）：\n1. 将字符串转换为十六进制字节\n2. 将十六进制字节转换为字符串\n```\nIn[]：\na = 'aabbccddeeff'\na_bytes = bytes.fromhex(a)\nprint(a_bytes)\naa = a_bytes.hex()\nprint(aa)\nOut[]：\nb'\\xaa\\xbb\\xcc\\xdd\\xee\\xff'\naabbccddeeff\n```\n# bytearray\nbytearray是bytes的可变版本\nstr和bytes是不可变的\nbytearray是可变类型，进行一次替换\n```\nIn[]：\nba = bytearray(b'abc')\nba[0] = int(b'D'.hex(),16)\nba\nOut[]：\nbytearray(b'Dbc')\n```\n这里要注意几个地方\n* bytearray更新的时候，也是一个一个字节更新的，不是一个字符串\n* 要把字节转换成十六进制数进行更替\n## 使用场景\n图像处理\n修改图片时，图片保存成了字节，需要一个可变版本的bytes\n## bytearray的方法\n相对bytes来说，多了insert，append，extend，pop，remove，clear，reverse\n其实就是多了list的那些方法，并且可以索引操作\n但是和修改bytearray一样，所有的方法中，都需要用int来表示，而非bytes本身\nint必须在0~256这个范围内，即8位的无符号整数\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "data": {
+        "title": "Python字符串与bytes",
+        "date": "2019-09-03 16:10:40",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "python-zi-fu-chuan-yu-bytes"
+    },
+    {
+      "content": "# print style字符串格式化\n通过在字符串后面追加一个百分号，再追加一个元组，元组里面加上你要组合的字符串\n传入参数顺序替换占位符，返回替换后的字符串\n```\nIn[]：\n'i use %s,i am %d' % ('python',18)\nOut[]：\n'i use python,i am 18'\n```\n**注意：当在拼接sql的时候，一定要用这种print style，%的方式可以帮助我们避免恶意攻击者sql注入**\n# format方法\nformat方法使用{}作为占位符\nformat可以在占位符里面加数字，指定format参数的位置\n```\nIn[]：\ns = 'i use {1},i am {0}'\ns.format(18,'python')\nOut[]：\n'i use python,i am 18'\n```\n参数可以通过指定位置方式多次使用\n```\nIn[]：\n'{0}{0}'.format('python')\nOut[]：\n'pythonpython'\n```\n可以在占位符里加标识符，来使用关键字参数\n```\nIn[]：\n'{who} {do} {what}'.format(who='everyone',do='use',what='python')\nOut[]：\n'everyone use python'\n```\n同时支持使用位置和关键字参数\n**位置参数必须要在前面，关键字参数在后面**\n```\nIn[]：\n'{0} {who} {do} {what}'.format('今天',who='everyone',do='use',what='python')\nOut[]：\n'今天 everyone use python'\n```\n若要打印{}，则在外面加一层{}即可\n```\nIn[]：\n'{{}}'.format()\nOut[]：\n'{}'\n```\n```\nIn[]：\n'{{{}}}'.format(18)\nOut[]：\n'{18}'\n```\n# f前缀\npython3.6开始新增了一项新的前缀，f前缀\n```\nIn[]：\nwho = 'everyone'\ndo = 'use'\nwhat = 'python'\nf'{who} {do} {what}'\nOut[]：\n'everyone use python'\n```\n当在代码块的上文中已经提及了这些变量，可以直接用f前缀加上这些变量来组合\n举个栗子：\n```\nIn[]：\ntoken = 'asdfasdfasdfasdf'\nuser_id = 1\ndt = '2019-09-03'\nurl = f'http://you-are-one.com/?token={token}&user_id={user_id}&dt={dt}'\nurl\nOut[]：\n'http://you-are-one.com/?token=asdfasdfasdfasdf&user_id=1&dt=2019-09-03'\n```\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
       "data": {
         "title": "Python字符串格式化",
         "date": "2019-09-03 14:29:12",
