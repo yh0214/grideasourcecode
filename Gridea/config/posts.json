@@ -1,7 +1,37 @@
 {
   "posts": [
     {
-      "content": "```\nIn[]：\n\nOut[]：\n\n```\n",
+      "content": "# 定义\n```\nIn[]：\nd = {}\nd\nOut[]：\n{}\nIn[]：\ntype(d)\nOut[]：\ndict\n```\n空字典是通过一对花括号定义的，空集合需要用set()\n定义字典的方法：\n\n\n\n```\nIn[]：\n\nOut[]：\n\n```\n\n```\nIn[]：\n\nOut[]：\n\n```\n\n\n```\nIn[]：\n\nOut[]：\n\n```\n\n\n```\nIn[]：\n\nOut[]：\n\n```",
+      "data": {
+        "title": "Python字典及常用操作",
+        "date": "2019-09-04 16:58:27",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "python-zi-dian-ji-chang-yong-cao-zuo"
+    },
+    {
+      "content": "# 交集\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1.intersection(s2)\nOut[]：\n{2, 3}\n```\ns1.intersection(s2)将得到s1集合与s2集合的交集，是**原地不修改，有返回值**\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns2.intersection_update(s1)\ns2\nOut[]：\n{2, 3}\n```\nset.intersection_update方法**原地修改，返回None**\n接下来看下python集合运算里的运算符重载\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1 & s2\nOut[]：\n{2, 3}\n```\n**set重载了按位与运算符&为求交集的运算**\n# 差集\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1.difference(s2)\nOut[]：\n{1}\n```\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1.difference_update(s2)\ns1\nOut[]：\n{1}\n```\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1 - s2\nOut[]：\n{1}\n```\n# 对称差集\n如果把两个集合A和B看成是一个全集，对称差集就是交集的补集\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1.symmetric_difference(s2)\nOut[]：\n{1, 4}\n```\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1.symmetric_difference_update(s2)\ns1\nOut[]：\n{1, 4}\n```\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1 ^ s2\nOut[]：\n{1, 4}\n```\n# 并集\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1.union(s2)\nOut[]：\n{1, 2, 3, 4}\n```\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1.update(s2)\ns1\nOut[]：\n{1, 2, 3, 4}\n```\n```\nIn[]：\ns1 = {1,2,3}\ns2 = {2,3,4}\ns1 | s2\nOut[]：\n{1, 2, 3, 4}\n```\n# 子集、超集\n判断s2是否是s1的子集\n```\nIn[]：\ns1 = {1,2,3,4}\ns2 = {2,3}\ns2.issubset(s1)\nOut[]：\nTrue\n```\n判断s1是否是s2的超集\n```\nIn[]：\ns1 = {1,2,3,4}\ns2 = {2,3}\ns1.issuperset(s2)\nOut[]：\nTrue\n```\n# 集合的应用\n* 去重\n* 集合运算更快\n\n1、权限认证，例如：具有权限要求满足A、B、C中任意一项，有一个用户具有权限B、C、D，那么此用户是否有权限？\n通过isdisjoin的方法，返回False即可\nisdisjoin判断2个集合是否有交集，如果有交集返回False，没有交集返回True\n2、有一个任务列表，存储全部的任务，有一个列表存储已经完成的任务，找出未完成的任务\n用差集\n# 集合的限制\n**集合元素必须可hash**\n```\nIn[]：\nhash([1,2,3])\nOut[]：\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\n<ipython-input-82-35e31e935e9e> in <module>\n----> 1 hash([1,2,3])\nTypeError: unhashable type: 'list'\nIn[]：\n{[1,2,3]}\nOut[]：\n---------------------------------------------------------------------------\nTypeError                                 Traceback (most recent call last)\n<ipython-input-83-f70e4b6b8fd1> in <module>\n----> 1 {[1,2,3]}\nTypeError: unhashable type: 'list'\n```\n",
+      "data": {
+        "title": "Python集合运算",
+        "date": "2019-09-04 14:29:05",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "python-ji-he-yun-suan"
+    },
+    {
+      "content": "# 定义与初始化\n集合没有重复元素\nset()可以对可迭代对象进行转化\n```\nIn[]：\ns = {1,2,3}\ns\nOut[]：\n{1, 2, 3}\n```\n# 集合增加\n```\nIn[]：\ns = {0,1,2}\ns.add(3)\ns\nOut[]：\n{0, 1, 2, 3}\n```\n在增加已存在元素时，set集合并不会被追加新元素\n```\nIn[]：\ns = {0,1,2,3}\ns.add(3)\ns\nOut[]：\n{0, 1, 2, 3}\n```\n再来看一个方法\n```\nIn[]：\nhelp(set.update)\nOut[]：\n**Help on method_descriptor:\nupdate(...)\n    Update a set with the union of itself and others.**\n```\nupdate方法会把自己和别人联合起来，但是会去重，**没有返回值，原地修改**\n```\nIn[]：\ns = {0,1,2,3}\ns.update(range(4,7))\ns\nOut[]：\n{0, 1, 2, 3, 4, 5, 6}\n```\n```\nIn[]：\ns = {0,1,2,3,4,5,6}\ns.update(range(4,9))\ns\nOut[]：\n{0, 1, 2, 3, 4, 5, 6, 7, 8}\n```\n# 集合删除\n## set.remove\n```\nIn[]：\nhelp(set.remove)\nOut[]：\nHelp on method_descriptor:\nremove(...)\n    Remove an element from a set; it must be a member.\n    If the element is not a member, raise a KeyError.\n```\n我们看remove的函数签名，2个点：\n* 会从集合中删除你传入的变量，但是这个变量必须是集合中已有的元素\n* 如果这个元素不存在，是会抛出异常的\n```\nIn[]：\ns = set(range(9))\ns.remove(0)\ns\nOut[]：\n{1, 2, 3, 4, 5, 6, 7, 8}\n```\nremove**原地修改，不返回值**\n## set.pop\n```\nIn[]：\nhelp(set.pop)\nOut[]：\nHelp on method_descriptor:\npop(...)\n    Remove and return an arbitrary set element.\n    Raises KeyError if the set is empty.\n```\n从函数签名得知，pop和remove有一个区别，就是pop会return这个删除的值\n同时，如果集合为空了，还要pop的话，会抛出KeyError信息\n## set.discard\n```\nIn[]：\nhelp(set.discard)\nOut[]：\nHelp on method_descriptor:\ndiscard(...)\n    Remove an element from a set if it is a member.\n    If the element is not a member, do nothing.\n```\ndiscard可以指定删除哪个元素，而不是像pop那样，只能从队首或者队尾删除\n**原地修改，不返回值**\ndiscard删除不存在的元素时，什么也不做\n# 修改\n集合不能修改单个元素\n# 查找\n**集合不能通过索引访问，因为集合不是一个线性结构**\n# 成员运算符\n因为集合的成员运算和其他线性结构的时间复杂度不同\n做一个简单的效率计算\n使用%%timeit，这是ipython提供的一个magic\n```\nIn[]：\nlst = list(range(1000000))\ns = set(range(1000000))\nIn[]：\n%%timeit\n-1 in lst\nOut[]：\n8.91 ms ± 126 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)\nIn[]：\n%%timeit\n-1 in s\nOut[]：\n32.3 ns ± 0.193 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)\n```\n在list里面做100次循环，得到平均值是8.91ms上下浮动126us，但是在set中，效率是32.3ns上下浮动0.193ns\n再来看一个：\n```\nIn[]：\nlst = list(range(100))\ns = set(range(100))\nIn[]：\n%%timeit\n-1 in lst\nOut[]：\n885 ns ± 3.95 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)\nIn[]：\n%%timeit\n-1 in s\nOut[]：\n32.2 ns ± 0.182 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)\n```\n做成员运算时，**列表的效率和列表的规模有关**\n做成员运算时，**集合的效率和集合的规模无关**\n成员运算\n* 集合的效率：O(1)\n* 列表的效率：O(n)\n\n所以可能的话，当你要做成员运算的时候，就把列表、元组转化成集合做\n\n\n\n\n\n\n\n",
       "data": {
         "title": "Python集合及常用操作",
         "date": "2019-09-04 09:36:03",
