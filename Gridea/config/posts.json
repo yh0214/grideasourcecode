@@ -1,7 +1,37 @@
 {
   "posts": [
     {
-      "content": "# 定义\n线性结构共同特点：\n* 可迭代\n* 可以用len方法获取长度\n* 可以通过索引访问\n* 可以切片\n\n# enumerate\n```\nIn[]：\nenumerate((1,2,3))\nOut[]：\n<enumerate at 0x6059750>\n```\n返回一个可迭代对象，再来看看这个可迭代对象是什么\n```\nIn[]：\nlist(enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n实现一个enumerate函数\n```\nIn[]：\ndef new_enumerate(iterator):\n    i = 0\n    for v in iterator:\n        yield i,v\n        i += 1\nlist(new_enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n需要同时获取索引和value时用这个函数\n# 迭代器\n可迭代对象可以通过iter方法转换为迭代器\nnext可以迭代迭代器，不可以迭代可迭代对象\n当next将迭代器的元素都迭代过一遍后，再迭代一次就会抛出StopIteration\n```\nIn[]：\nit = iter(list((1,2,3)))\nnext(it)\nOut[]：\n1\n```\n# 切片操作\nlst\\[start:stop\\]，可以访问这个list一段，从start开始，到stop结束，不包含stop，并且是原地不修改，有返回值\n* start超出索引范围时，start = 0\n* stop超出索引范围时，stop = -0\n* 当start>=stop时，返回空列表\n* 负数索引，实际上等于len(lst) + index\n\n\n```\nIn[]：\n\nOut[]：\n\n```",
+      "content": "```\nIn[]：\n\nOut[]：\n\n```\n",
+      "data": {
+        "title": "Python集合及常用操作",
+        "date": "2019-09-04 09:36:03",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "python-ji-he-ji-chang-yong-cao-zuo"
+    },
+    {
+      "content": "# 解构\n先来看一个栗子：\n```\nIn[]：\nx = 1\ny = 2\nx,y = y,x\nprint(x,y)\nOut[]：\n2 1\n```\n结构顾名思义，把一个整体拆成多个小个体\n```\nIn[]：\nlst = [1,2]\nfirst,second = lst\nprint(first,second)\nOut[]：\n1 2\n```\n这样的一个过程我们称之为解构\n**解构**：按照元素顺序，把**线性结构**的元素赋值给变量\n# 封装\n封装是解构的逆向操作\n```\nIn[]：\nt = 1,2\nt\nOut[]：\n(1, 2)\n```\n# python3中解构的变化\n## 八大变体\n第一种变体：head代表第一个元素，tail是最后一个元素，mid是中间所有元素：\n```\nIn[]：\nlst = list(range(10))\nhead,*mid,tail = lst\nprint(head)\nprint(mid)\nprint(tail)\nOut[]：\n0\n[1, 2, 3, 4, 5, 6, 7, 8]\n9\n```\n第二种变体：加星号的tail是除了第一个外的所有元素：\n```\nIn[]：\nlst = list(range(10))\nhead,*tail = lst\nprint(head)\nprint(tail)\nOut[]：\n0\n[1, 2, 3, 4, 5, 6, 7, 8, 9]\n```\n第三种变体：加星号的head是除了最后一个外的所有元素\n```\nIn[]：\nlst = list(range(10))\n*head,tail = lst\nprint(head)\nprint(tail)\nOut[]：\n[0, 1, 2, 3, 4, 5, 6, 7, 8]\n9\n```\n第四种变体：左边只有一个加星号的变量，**这个是不行的**\n```\nIn[]：\nlst = list(range(10))\n*lst2 = lst\nOut[]：\n*lst2 = lst\n  File \"<ipython-input-14-d0dbc72204e9>\", line 5\nSyntaxError: starred assignment target must be in a list or tuple\n```\n第五种变体：左边有两个或两个以上加星号的，**是不行的**\n```\nIn[]：\nlst = list(range(10))\nhead,*m1,*m2,tail = lst\nOut[]：\n  File \"<ipython-input-15-8f61a35156b2>\", line 5\nSyntaxError: two starred expressions in assignment\n```\n第六种变体：左边加上一些其他变量\n```\nIn[]：\nlst = list(range(10))\nfirst,second,*other,last = lst\nprint(first)\nprint(second)\nprint(other)\nprint(last)\nOut[]：\nlst = list(range(10))\nfirst,second,*other,last = lst\nprint(first)\nprint(second)\nprint(other)\nprint(last)\nlst = list(range(10))\nfirst,second,*other,last = lst\nprint(first)\nprint(second)\nprint(other)\nprint(last)\n0\n1\n[2, 3, 4, 5, 6, 7, 8]\n9\n```\n第七种变体：当左边变量超过右边元素个数的时候，**是不允许的**\n```\nIn[]：\nlst = list(range(2))\nv1,v2,v3 = lst\nOut[]：\n---------------------------------------------------------------------------\nValueError                                Traceback (most recent call last)\n<ipython-input-20-cc6bc96adc53> in <module>\n      1 lst = list(range(2))\n----> 2 v1,v2,v3 = lst\nValueError: not enough values to unpack (expected 3, got 2)\n```\n第八种变体：当左边变量数小于右边变量数，且左边没有加星号的变量，**是不允许的**\n```\nIn[]：\nlst = list(range(10))\nv1,v2,v3 = lst\nOut[]：\n---------------------------------------------------------------------------\nValueError                                Traceback (most recent call last)\n<ipython-input-21-03d03897cf0b> in <module>\n      1 lst = list(range(10))\n----> 2 v1,v2,v3 = lst\nValueError: too many values to unpack (expected 3)\n```\n**小结：**\n元素按照顺序赋值给变量\n变量和元素必须匹配\n加星号变量，可以接受任意个数的元素\n加星号的变量不能单独出现\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "data": {
+        "title": "Python解构与封装",
+        "date": "2019-09-04 08:34:40",
+        "tags": [],
+        "published": true,
+        "hideInList": false,
+        "feature": null
+      },
+      "isEmpty": false,
+      "excerpt": "",
+      "abstract": "",
+      "fileName": "python"
+    },
+    {
+      "content": "# 定义\n线性结构共同特点：\n* 可迭代\n* 可以用len方法获取长度\n* 可以通过索引访问\n* 可以切片\n\n# enumerate\n```\nIn[]：\nenumerate((1,2,3))\nOut[]：\n<enumerate at 0x6059750>\n```\n返回一个可迭代对象，再来看看这个可迭代对象是什么\n```\nIn[]：\nlist(enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n实现一个enumerate函数\n```\nIn[]：\ndef new_enumerate(iterator):\n    i = 0\n    for v in iterator:\n        yield i,v\n        i += 1\nlist(new_enumerate((1,2,3)))\nOut[]：\n[(0, 1), (1, 2), (2, 3)]\n```\n需要同时获取索引和value时用这个函数\n# 迭代器\n可迭代对象可以通过iter方法转换为迭代器\nnext可以迭代迭代器，不可以迭代可迭代对象\n当next将迭代器的元素都迭代过一遍后，再迭代一次就会抛出StopIteration\n```\nIn[]：\nit = iter(list((1,2,3)))\nnext(it)\nOut[]：\n1\n```\n# 切片操作\nlst\\[start:stop\\]，可以访问这个list一段，从start开始，到stop结束，不包含stop，并且是原地不修改，有返回值\n* start超出索引范围时，start = 0\n* stop超出索引范围时，stop = -0\n* 当start>=stop时，返回空列表\n* 负数索引，实际上等于len(lst) + index\n\nlst[::-1]可以直接将列表倒序\n",
       "data": {
         "title": "Python线性结构与切片",
         "date": "2019-09-03 17:29:44",

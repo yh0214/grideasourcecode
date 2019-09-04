@@ -58,10 +58,4 @@ lst\[start:stop\]，可以访问这个list一段，从start开始，到stop结�
 * 当start>=stop时，返回空列表
 * 负数索引，实际上等于len(lst) + index
 
-
-```
-In[]：
-
-Out[]：
-
-```
+lst[::-1]可以直接将列表倒序
