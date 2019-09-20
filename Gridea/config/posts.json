@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "content": "所谓匿名函数就是没有名字的函数，用lambda这个关键字来定义\nlambda后面接一个参数x，然后用冒号分隔，然后定义一个函数体\n```\nlambda x : x + 1\n```",
+      "content": "所谓匿名函数就是没有名字的函数，用lambda这个关键字来定义\nlambda后面接一个参数x，然后用冒号分隔，然后定义一个函数体\n```\nlambda x : x + 1\n```\n冒号后面是不换行的\n```\nIn[]：(lambda x : x + 1)(3)\nOut[]：4\n```\n```\nIn[]：\nf = lambda x : x + 1\nf(3)\nOut[]：4\n```\n匿名函数（lambda表达式）只能写在一行上，所以也被称为单行函数\n匿名函数可以不传参数，直接返回值\n```\nIn[]：\nf = lambda : 0\nf()\nOut[]：0\n```\n匿名函数传递多个参数也是可以的\n```\nIn[]：\nf = lambda x,y : x + y\nf(3,5)\nOut[]：8\n```\n匿名函数也是支持默认参数的\n```\nIn[]：\n(lambda x,y=3:x + y)(3)\nOut[]：6\n```\n匿名函数也是支持位置可变参数的\n```\nIn[]：\n(lambda *args:args)(*range(3))\nOut[]：(0, 1, 2)\n```\n关键字可变参数也是ok的\n```\nIn[]：\n(lambda *args,**kwargs:print(args,kwargs))(*range(3),**{str(x):x for x in range(3)})\nOut[]：(0, 1, 2) {'0': 0, '1': 1, '2': 2}\n```\n再来看下keyword-only参数\n```\nIn[]：\n(lambda *,x : x)(x = 3)\nOut[]：3\n```\n# 匿名函数的应用\n## sorted\n```\nIn[]：\nhelp(sorted)\nOut[]：\nHelp on built-in function sorted in module builtins:\nsorted(iterable, /, *, key=None, reverse=False)\n    Return a new list containing all items from the iterable in ascending order.\n    A custom key function can be supplied to customize the sort order, and the\n    reverse flag can be set to request the result in descending order.\n```\n\n\n```\nIn[]：\n\nOut[]：\n```\n\n```\nIn[]：\n\nOut[]：\n```\n\n\n```\nIn[]：\n\nOut[]：\n```\n\n```\nIn[]：\n\nOut[]：\n```\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
       "data": {
         "title": "匿名函数",
         "date": "2019-09-19 22:45:17",
