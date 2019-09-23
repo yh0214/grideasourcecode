@@ -73,6 +73,32 @@ sorted(iterable, /, *, key=None, reverse=False)
     A custom key function can be supplied to customize the sort order, and the
     reverse flag can be set to request the result in descending order.
 ```
+里面传一个可迭代对象，key默认是None，然后reverse代表反转
+假设有一个User对象，它有name和age两个属性
+```
+from collections import namedtuple
+User = namedtuple('User',['name','age'])
+```
+然后创建一个User的对象列表
+```
+users = [User('yh',18),User('max',16),User('xxx',32)]
+```
+在不使用匿名函数的情况下，让users根据age来进行排序
+```
+In[]：
+def get_age(user):
+    return user.age
+sorted(users,key=get_age)
+Out[]：
+[User(name='max', age=16), User(name='yh', age=18), User(name='xxx', age=32)]
+```
+在使用匿名函数的情况下，让users根据age来进行排序
+```
+In[]：sorted(users,key = lambda x : x.age)
+Out[]：[User(name='max', age=16), User(name='yh', age=18), User(name='xxx', age=32)]
+```
+当函数作为参数时，需要使用匿名函数
+## map
 
 
 ```
@@ -80,13 +106,6 @@ In[]：
 
 Out[]：
 ```
-
-```
-In[]：
-
-Out[]：
-```
-
 
 ```
 In[]：
