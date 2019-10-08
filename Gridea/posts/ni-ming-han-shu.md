@@ -99,24 +99,20 @@ Out[]：[User(name='max', age=16), User(name='yh', age=18), User(name='xxx', age
 ```
 当函数作为参数时，需要使用匿名函数
 ## map
-
-
 ```
-In[]：
-
-Out[]：
+In[]：map(lambda x:x*2,[1,2,3])
+Out[]：<map at 0x64671d0>
 ```
-
+但是在python3中把map改成一个生成器了，可以使用list转换一下
 ```
-In[]：
-
-Out[]：
+In[]：list(map(lambda x:x*2,[1,2,3]))
+Out[]：[2, 4, 6]
 ```
-
+## Filter
+把每个可迭代对象传进来，如果函数返回True，就存在，返回False，就不存在
 ```
-In[]：
-
-Out[]：
+In[]：list(filter(lambda x:x<30,[16,18,32]))
+Out[]：[16, 18]
 ```
 
 
