@@ -194,19 +194,38 @@ Out[]：1
 每次都会初始化一个c，给它一个新的生成器，所以每次都是1
 使用lambda的话，只会生成一次c，后面每次都是调用这个函数
 应用
+斐波那契数列
+首先看使用递归实现，递归非常慢
+```
+def fib(n):
+    if n == 0:
+        return 1
+    if n == 1:
+        return 1
+    return fib(n-1) + fib(n-2)
+```
+还可以使用生成器实现
+```
+def fib():
+    a = 0
+    b = 1
+    while True:
+        a,b = b,a + b
+        yield a
+```
 ```
 In[]：
+f = fib()
+for _ in range(5):
+    print(next(f))
 Out[]：
+1
+1
+2
+3
+5
 ```
+生成器可以解决递归问题
+协程是生成器的高级应用
 
 
-```
-In[]：
-Out[]：
-```
-
-
-```
-In[]：
-Out[]：
-```
